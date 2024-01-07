@@ -1,0 +1,265 @@
+.c-project-container {
+  max-width: 1500px;
+  width: 100%;
+  margin: 45px auto 0 auto;
+  display: none;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  padding: 0 15px;
+  opacity: 0;
+}
+
+.c-left-container {
+  width: 100%;
+  max-width: 770px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px auto;
+}
+.c-project-img-container {
+  width: 268px;
+  height: 268px;
+}
+.c-rendered-content {
+  width: 268px;
+}
+.c-rendered-content p {
+  line-height: 3rem;
+  font-size: 1.1rem;
+  font-family: 'Arimo';
+}
+.c-center-wrapper {
+  flex-grow: 1;
+  margin: 0 10px;
+}
+.c-center-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 530px;
+  margin: 0 auto;
+  height: 100%;
+}
+.c-top-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 30px;
+}
+.c-video-inner-0 {
+  width: 256px;
+  height: 144px;
+}
+.c-video-poster-0 {
+  width: 256px;
+  height: 144px;
+}
+.c-company-logo {
+  border-radius: 65px;
+  margin-right: 18px;
+}
+.c-company {
+  margin: 0;
+  font-family: 'Arimo';
+}
+.c-project-title {
+  line-height: 1.9rem;
+  font-family: 'Arimo';
+  font-weight: 200;
+  color: white;
+}
+.c-project-music-container {
+  margin-bottom: 50px;
+}
+.c-featured-video {
+  width: 100%;
+  max-width: 400px;
+  height: 225px;
+  display: flex;
+  align-items: flex-end;
+}
+.c-right-content {
+  display: none;
+  /* border: 1px solid white; */
+  width: 300px;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex: none;
+}
+.c-right-content-2 {
+  display: flex;
+  width: 300px;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-grow: 1;
+}
+.c-project-datas,
+.c-project-datas-download {
+  display: flex;
+  margin-top: 30px;
+  flex-direction: column;
+}
+.c-project-datas-download {
+  margin-top: 0;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.c-project-datas p {
+  display: flex;
+  justify-content: space-between;
+}
+.c-dl-bloc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.c-dl-bloc img {
+  margin: 0;
+}
+.c-project-datas-download p {
+  text-align: center;
+}
+.c-pdata-align-right {
+  display: block;
+  width: 35%;
+  text-align: right;
+}
+.c-pdata-align-left {
+  display: block;
+  width: 61%;
+  text-align: left;
+}
+.c-projects-wrapper {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.c-projects-wrapper .music-player-container {
+  height: 100px;
+}
+@media screen and (min-width: 640px) {
+  .c-center-container {
+    max-width: none;
+  }
+  .c-video-inner-0 {
+    width: 420px;
+    height: 236px;
+  }
+  .c-video-poster-0 {
+    width: 420px;
+    height: 236px;
+  }
+  .c-right-content-2 {
+    padding-left: 50px;
+  }
+}
+@media screen and (min-width: 850px) {
+  .c-project-container {
+    margin-top: 60px;
+    padding: 0 30px;
+  }
+  .c-featured-video {
+    max-width: 770px;
+    height: 433px;
+  }
+  .c-video-inner-0 {
+    width: 768px;
+    height: 432px;
+  }
+  .c-video-poster-0 {
+    width: 768px;
+    height: 432px;
+  }
+  .c-left-container {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .c-project-datas,
+  .c-project-datas-download {
+    margin-bottom: 80px;
+  }
+  .c-projects-wrapper {
+    max-width: 800px;
+    margin: 50px auto 0 auto;
+  }
+}
+
+@media screen and (min-width: 1250px) {
+  .c-project-container {
+    max-width: 1490px;
+    width: 100%;
+    /*display: flex;*/
+    padding: 0 30px;
+  }
+  .c-left-container {
+    width: fit-content;
+  }
+  .c-center-container {
+    max-width: 1150px;
+  }
+  .c-project-music-container {
+    margin-left: 0;
+  }
+  .c-right-content {
+    display: none;
+  }
+  .c-right-content-2 {
+    display: flex;
+  }
+  .c-project-datas {
+    display: flex;
+  }
+  .c-projects-wrapper {
+    justify-content: space-between;
+    margin-top: 0;
+    width: 100%;
+    max-width: none;
+    flex-wrap: unset;
+  }
+}
+@media screen and (min-width: 1550px) {
+  .c-project-container {
+    max-width: 1590px;
+    width: 100%;
+    margin: 115px auto 0 auto;
+    /* display: flex; */
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 30px;
+  }
+
+  .c-left-container {
+    width: fit-content;
+    margin: 0;
+    width: 300px;
+  }
+  .c-center-wrapper {
+    width: 100%;
+    max-width: 1150px;
+  }
+  .c-project-music-container {
+    margin-left: 0;
+  }
+  .c-top-wrapper {
+    margin: 0;
+  }
+  .c-right-content {
+    display: flex;
+  }
+  .c-right-content-2 {
+    display: none;
+  }
+  .c-project-datas {
+    display: flex;
+  }
+  .c-projects-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 105px;
+    width: 100%;
+  }
+}

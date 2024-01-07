@@ -1,0 +1,43 @@
+.bottom-nav-container {
+  background-color: rgb(0, 0, 0, 0.6);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 48px;
+}
+.bottom-nav {
+  /* ul */
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 765px;
+  padding-bottom: 3px;
+}
+.nav-item {
+  font-size: 1.2rem;
+  font-family: 'MavenPro';
+  padding: 3px 10px 0px 10px;
+  min-height: 36px;
+  text-shadow: 1px 2px 1px black;
+  color: #ffffff;
+}
+.nav-item:hover {
+  color: #999999;
+}
+@media screen and (min-width: 700px) {
+  .bottom-nav {
+    padding-bottom: 0;
+  }
+  .nav-item {
+    font-size: 1.6rem;
+    padding: 0px 0 2px 0;
+  }
+}

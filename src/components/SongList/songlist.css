@@ -1,0 +1,63 @@
+/*project */
+.music-player-container {
+  position: relative;
+  width: 268px;
+  height: 268px;
+  border: 4px solid white;
+  flex: initial;
+  margin-bottom: 60px;
+}
+.mpc-background {
+  background-size: cover;
+  opacity: 0.6;
+  width: 100%;
+  height: 100%;
+}
+.mpc-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 25px 0 25px 15px;
+}
+.mpc-inner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+}
+.mpc-inner.scroll-bar {
+  scrollbar-width: thin;
+}
+/* Gérer webkit scrollbar */
+.music-field {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.music-field p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1rem;
+  margin-bottom: 4px;
+}
+/* Music */
+
+.music-field {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.music-field p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1rem;
+  margin-bottom: 4px;
+}
+@media screen and (min-width: 1450px) {
+  .music-player-container {
+    margin-bottom: 0;
+  }
+}

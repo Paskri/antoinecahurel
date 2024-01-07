@@ -1,0 +1,33 @@
+.loader-container {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  justify-content: center;
+  margin-top: 20px;
+}
+.loader {
+  padding: 10px;
+  border: 7px solid #999999;
+  border-image-slice: 1;
+  border-bottom-color: transparent;
+  border-radius: 20px;
+  animation: rotate 1.5s infinite linear;
+  height: 0;
+  width: 0;
+}
+
+@keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .loader-container {
+    height: 55px;
+  }
+}

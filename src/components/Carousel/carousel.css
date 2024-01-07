@@ -1,0 +1,140 @@
+.carousel-container {
+  position: relative;
+  width: 290px;
+  height: 245px;
+  margin: auto;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.carousel-prev,
+.carousel-next {
+  position: absolute;
+  bottom: 0;
+  width: 55px;
+  height: 170px;
+  background-color: rgb(255, 255, 255, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 70px;
+  opacity: 0.7;
+  z-index: 2;
+}
+.carousel-prev {
+  left: 0;
+}
+.carousel-next {
+  right: 0;
+}
+.carousel-controls {
+  cursor: pointer;
+  color: #fff;
+}
+.projects-container {
+  background: #131313;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 170px;
+  display: flex;
+  padding-right: 60px;
+}
+.project-card {
+  position: relative;
+  width: 170px;
+  height: 100%;
+  margin-left: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: filter 1s ease-in-out;
+}
+.project-img {
+  transition: filter 0.7s ease-in-out;
+}
+
+.dimmed {
+  filter: brightness(40%);
+}
+.angle {
+  position: absolute;
+  width: 75px;
+  height: 42px;
+  top: -42px;
+  left: 0px;
+  border-top: 3px solid #7e7f7e;
+  border-left: 3px solid #7e7f7e;
+}
+.year-marker {
+  position: absolute;
+  top: -77px;
+  left: 76px;
+  font-family: 'Barlow-Regular';
+  font-size: 30px;
+  color: #7e7f7e;
+}
+.project-img {
+  height: 100%;
+  object-fit: scale-down;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 610px) {
+  .carousel-container {
+    width: 510px;
+    height: 350px;
+    margin-top: 35px;
+  }
+  .carousel-prev,
+  .carousel-next {
+    width: 75px;
+    height: 270px;
+  }
+  .projects-container {
+    height: 270px;
+    padding-right: 120px;
+  }
+  .project-img {
+    object-fit: cover;
+  }
+  .project-card {
+    width: 270px;
+    margin-left: 120px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .carousel-container {
+    width: 900px;
+  }
+  .angle {
+    position: absolute;
+    width: 75px;
+    height: 42px;
+    top: -42px;
+    left: 0px;
+    border-top: 3px solid #7e7f7e;
+    border-left: 3px solid #7e7f7e;
+  }
+  .year-marker {
+    position: absolute;
+    top: -92px;
+    left: 76px;
+    font-family: 'Barlow-Regular';
+    font-size: 42px;
+    color: #7e7f7e;
+  }
+}
+@media screen and (min-width: 1390px) {
+  .carousel-container {
+    width: 1290px;
+  }
+}
+@media screen and (min-width: 1780px) {
+  .carousel-container {
+    width: 1680px;
+  }
+}

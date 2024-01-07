@@ -1,0 +1,32 @@
+.banner-container {
+  position: relative;
+  height: 327px;
+  width: 100%;
+  z-index: 1;
+}
+
+.banner {
+  position: relative;
+  object-fit: cover;
+  width: 100%;
+  height: 327px;
+  opacity: 0;
+  display: none;
+  transition: 3s;
+}
+.banner-display {
+  display: block;
+}
+.banner-show {
+  opacity: 1;
+}
+.banner-hide {
+  opacity: 0;
+}
+.img-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

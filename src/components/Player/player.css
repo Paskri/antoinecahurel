@@ -1,0 +1,155 @@
+.player-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  width: fit-content;
+  background-color: rgb(0, 0, 0, 0.6);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.player-controls-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.player-controls {
+  /* ul */
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.player-controls li {
+  width: 45px;
+  height: 36px;
+  text-indent: -3000px;
+  overflow: hidden;
+  border-right: 1px solid #4a5255;
+  cursor: pointer;
+  background: url(../../assets/images/controls-big.png) 0 0 no-repeat;
+  background-position-x: 0px;
+  background-position-y: 0px;
+  margin: 0;
+}
+.player-controls li.previous {
+  background-position: 0 0;
+  border-left: 1px solid #4a5255;
+}
+.player-controls li.pause {
+  background-position: -45px 0;
+}
+.player-controls li.play {
+  background-position: -90px 0;
+}
+.player-controls li.next {
+  background-position: -135px 0;
+}
+.player-controls li.previous:hover,
+.player-controls li.pause:hover,
+.player-controls li.play:hover,
+.player-controls li.next:hover {
+  background-position-y: -36px;
+}
+.player-title-display {
+  padding-left: 0;
+  font-family: 'MavenPro';
+  font-size: 0.9375rem;
+  color: #999999;
+  margin-top: 5px;
+  flex: none;
+  text-align: center;
+}
+.hidden {
+  display: none;
+}
+.seek {
+  position: relative;
+  width: 170px;
+  height: 10px;
+  background-color: #999999;
+  margin-top: 10px;
+}
+.progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 10px;
+  background-color: white;
+}
+.progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 10px;
+  background-color: white;
+  border-radius: 0;
+  border: none;
+}
+.progress[value]::-webkit-progress-value {
+  background-color: #fff;
+}
+.progress[value]::-webkit-progress-bar {
+  background-color: #fff;
+}
+.progress[value]::-moz-progress-bar {
+  background-color: #fff;
+}
+
+@media screen and (min-width: 395px) {
+  .player-controls-container {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .player-controls {
+    padding: 0 0 0 2px;
+  }
+  .seek {
+    margin: 0 0 0 12px;
+  }
+}
+@media screen and (min-width: 700px) {
+  .player-container {
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+  }
+  .player-title-display {
+    padding-left: 15px;
+    margin: 0;
+  }
+  .player-controls li {
+    background: url(../../assets/images/controls.png) 0 0 no-repeat;
+    width: 30px;
+    height: 24px;
+  }
+  .player-controls li.pause {
+    background-position: -30px 0;
+  }
+  .player-controls li.play {
+    background-position: -60px 0;
+  }
+  .player-controls li.next {
+    background-position: -90px 0;
+  }
+  .player-controls li.previous:hover,
+  .player-controls li.pause:hover,
+  .player-controls li.play:hover,
+  .player-controls li.next:hover {
+    background-position-y: -24px;
+  }
+}
+@media screen and (min-width: 975px) {
+  .top-bar {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+  .player-container {
+    margin-left: 23px;
+    padding: 5px 10px;
+  }
+}
