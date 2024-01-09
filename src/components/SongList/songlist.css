@@ -38,6 +38,10 @@
   align-items: center;
   cursor: pointer;
 }
+.music-field:focus {
+  outline: none;
+  border: 1px solid white;
+}
 .music-field p {
   margin: 0;
   font-size: 1rem;

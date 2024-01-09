@@ -72,6 +72,7 @@ export default function CarouselImg({ album, featured, albumIndex, active }) {
 
   return (
     <a
+      className="project-link"
       tabIndex={active ? '0' : '-1'}
       href="#"
       onClick={(e) => handleClick(e, album, data.source_url, albumIndex)}

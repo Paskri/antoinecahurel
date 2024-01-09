@@ -1,3 +1,6 @@
 .video-inner-container {
   height: 432px;
 }
+.video-inner-container a:focus {
+  outline: 1px solid white;
+}

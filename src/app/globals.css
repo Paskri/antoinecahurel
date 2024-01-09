@@ -21,7 +21,13 @@
 *::after {
   box-sizing: border-box;
 }
-
+/*:focus {
+  outline: 1px solid white;
+}
+a:focus {
+  outline: none;
+  border: 1px solid white;
+}*/
 /* Remove default margin */
 body,
 h1,

@@ -94,14 +94,15 @@ export default function About() {
             <p>
               Benefiting from an experience as a full-time professional musician
               in various contexts, I not only developed the skill to compose
-              <span
+              <a
+                href="#"
                 className="white-link"
                 data-title="Music"
-                onClick={handleClick}
+                onClick={(e) => handleClick(e)}
               >
                 {' '}
                 music
-              </span>
+              </a>
               , but also the ability to manage the whole production process, in
               a wide range of styles such as Cinematic Orchestral, Rock, Jazz,
               Retro, Electro, Folk, Classically-influenced, Oriental-influenced,
@@ -109,25 +110,27 @@ export default function About() {
             </p>
             <p>
               I also have certified skills in{' '}
-              <span
+              <a
+                href="#"
                 className="white-link"
                 data-title="SoundDesign"
                 onClick={handleClick}
               >
                 sound design
-              </span>
+              </a>
               , which allows me to meet all the needs of most audio projects
               targeted by the industry.
             </p>
             <p>
               On this website you can find some examples of my work for{' '}
-              <span
+              <a
+                href="#"
                 className="white-link"
                 data-title="Home"
                 onClick={handleClick}
               >
                 projects
-              </span>{' '}
+              </a>{' '}
               where I put my skills at the service of the art direction given to
               me. But whatever the context, I will always aspire to achieve the
               most original, engaging and innovative audio experience I can.
@@ -146,13 +149,14 @@ export default function About() {
             </p>
             <p>
               To discuss a new project or commission work, feel free to{' '}
-              <span
+              <a
+                href="#"
                 className="white-link"
                 data-title="Contact"
                 onClick={handleClick}
               >
                 contact me
-              </span>
+              </a>
               .
             </p>
           </div>

@@ -125,6 +125,7 @@ export default function Video(props) {
             <>
               {video && video.poster ? (
                 <a
+                  className="video-link"
                   href="#"
                   onClick={(e) => handlePosterClick(e)}
                   tabIndex={ariaActive ? '0' : '-1'}

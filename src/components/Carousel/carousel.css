@@ -28,8 +28,16 @@
 .carousel-prev {
   left: 0;
 }
+.carousel-prev:focus {
+  left: 1px;
+  outline: 1px solid white;
+}
 .carousel-next {
   right: 0;
+}
+.carousel-next:focus {
+  right: 1px;
+  outline: 1px solid white;
 }
 .carousel-controls {
   cursor: pointer;
@@ -55,9 +63,8 @@
   transition: filter 1s ease-in-out;
 }
 
-.show-project {
-}
-.hide-project {
+.project-link:focus {
+  outline: 1px solid white;
 }
 .project-img {
   transition: filter 0.7s ease-in-out;
