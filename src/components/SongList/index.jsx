@@ -6,14 +6,14 @@ import { useState, useCallback, useRef, useEffect } from 'react'
 import { useAudioDispatch, useAudioState } from '../../hooks/useAudio'
 
 export default function SongList({ musicFields, background }) {
-  const playerRef = useRef(null)
   const audioState = useAudioState()
   const audioDispatch = useAudioDispatch()
   const [color, setColor] = useState('#bbbbbb')
   const [playlistLoaded, setPlaylistLoaded] = useState(false)
   const mpcInnerRef = useRef(null)
 
-  const handleMusicClick = (index) => {
+  const handleMusicClick = (e, index) => {
+    e.preventDefault()
     // loading playlist
     audioDispatch({ type: 'PAUSE' })
     if (!playlistLoaded) {
@@ -57,21 +57,25 @@ export default function SongList({ musicFields, background }) {
 
   return (
     <>
-      <div className="music-player-container" ref={playerRef}>
+      <div className="music-player-container" aria-label="Project playlist">
         <div
           className="mpc-background"
           style={{ backgroundImage: `url('${background}')` }}
         ></div>
         <div className="mpc-wrapper">
-          <div className="mpc-inner" ref={mpcInnerRef}>
+          <div className="mpc-inner" ref={mpcInnerRef} tabIndex="-1">
             {musicFields
               ? Object.values(musicFields).map((music, index) => (
-                  <div
+                  <a
+                    href="#"
                     className="music-field"
                     key={`Music - ${index}`}
                     data-url={music.url}
-                    onClick={() => handleMusicClick(index)}
+                    onClick={(e) => handleMusicClick(e, index)}
                     data-playlist="Trouver la valeur pr connexion avec lecteur"
+                    role="group"
+                    aria-roledescription={`play ${music.title}`}
+                    aria-label={`1 of ${index + 1}`}
                   >
                     <Image
                       className="project-arrow"
@@ -96,7 +100,7 @@ export default function SongList({ musicFields, background }) {
                     >
                       {music.title}
                     </p>
-                  </div>
+                  </a>
                 ))
               : ''}
           </div>

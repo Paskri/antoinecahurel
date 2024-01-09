@@ -22,7 +22,8 @@
   margin: 0;
   padding: 0;
 }
-.player-controls li {
+.player-controls button {
+  border: none;
   width: 45px;
   height: 36px;
   text-indent: -3000px;
@@ -34,23 +35,23 @@
   background-position-y: 0px;
   margin: 0;
 }
-.player-controls li.previous {
+.player-controls button.previous {
   background-position: 0 0;
   border-left: 1px solid #4a5255;
 }
-.player-controls li.pause {
+.player-controls button.pause {
   background-position: -45px 0;
 }
-.player-controls li.play {
+.player-controls button.play {
   background-position: -90px 0;
 }
-.player-controls li.next {
+.player-controls button.next {
   background-position: -135px 0;
 }
-.player-controls li.previous:hover,
-.player-controls li.pause:hover,
-.player-controls li.play:hover,
-.player-controls li.next:hover {
+.player-controls button.previous:hover,
+.player-controls button.pause:hover,
+.player-controls button.play:hover,
+.player-controls button.next:hover {
   background-position-y: -36px;
 }
 .player-title-display {
@@ -122,24 +123,24 @@
     padding-left: 15px;
     margin: 0;
   }
-  .player-controls li {
+  .player-controls button {
     background: url(../../assets/images/controls.png) 0 0 no-repeat;
     width: 30px;
     height: 24px;
   }
-  .player-controls li.pause {
+  .player-controls button.pause {
     background-position: -30px 0;
   }
-  .player-controls li.play {
+  .player-controls button.play {
     background-position: -60px 0;
   }
-  .player-controls li.next {
+  .player-controls button.next {
     background-position: -90px 0;
   }
-  .player-controls li.previous:hover,
-  .player-controls li.pause:hover,
-  .player-controls li.play:hover,
-  .player-controls li.next:hover {
+  .player-controls button.previous:hover,
+  .player-controls button.pause:hover,
+  .player-controls button.play:hover,
+  .player-controls button.next:hover {
     background-position-y: -24px;
   }
 }

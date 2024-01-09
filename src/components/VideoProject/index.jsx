@@ -57,7 +57,7 @@ export default function VideoProject(props) {
   return (
     <>
       {video ? (
-        <div className={`video-inner-${index}`}>
+        <div className={`video-inner-${index} video-inner-container`}>
           {play && active === index ? (
             <YouTube
               videoId={video.code}

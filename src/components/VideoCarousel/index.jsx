@@ -73,32 +73,6 @@ export default function VideoCarousel(props) {
       }, 100)
     }
 
-    const handleCarouselClick = (value) => {
-      videoContainer.style.transition = `1s`
-      videoContainer.style.left = `${
-        ((vIndex + value + 2) * step - videoWidth / 4) * -1
-      }px`
-
-      setTimeout(() => {
-        videoContainer.style.transition = ``
-
-        let nextIndex = 0
-        if (vIndex + value < 0) {
-          setVIndex(Object.values(videoFields).length - 1)
-        } else if (vIndex + value === Object.values(videoFields).length) {
-          setVIndex(0)
-        } else {
-          setVIndex(vIndex + value)
-        }
-      }, 1000)
-    }
-
-    const handlePrevClick = () => handleCarouselClick(-1)
-    const handleNextClick = () => handleCarouselClick(1)
-
-    prev.addEventListener('click', handlePrevClick)
-    next.addEventListener('click', handleNextClick)
-
     // Initial setup
     handleResizeThrottled()
     videoContainer.style.left = `-${(vIndex + 2) * step - videoWidth / 4}px`
@@ -107,40 +81,90 @@ export default function VideoCarousel(props) {
 
     return () => {
       window.removeEventListener('resize', handleResizeThrottled)
-      prev.removeEventListener('click', handlePrevClick)
-      next.removeEventListener('click', handleNextClick)
     }
   }, [step, vIndex, videoWidth, videoFields])
 
+  const handleCarouselClick = (e, value) => {
+    e.preventDefault()
+    const videoContainer = videoContainerRef.current
+    videoContainer.style.transition = `1s`
+    videoContainer.style.left = `${
+      ((vIndex + value + 2) * step - videoWidth / 4) * -1
+    }px`
+
+    setTimeout(() => {
+      videoContainer.style.transition = ``
+      let nextIndex = 0
+      if (vIndex + value < 0) {
+        setVIndex(Object.values(videoFields).length - 1)
+      } else if (vIndex + value === Object.values(videoFields).length) {
+        setVIndex(0)
+      } else {
+        setVIndex(vIndex + value)
+      }
+    }, 1000)
+  }
+
   return (
     <>
-      <div className="video-carousel">
-        <div className="video-prev">
+      <div
+        className="video-carousel"
+        aria-roledescription="carousel"
+        aria-label="Videos Carousel"
+      >
+        <a
+          href="#"
+          className="video-prev"
+          aria-controls="videos-carousel"
+          aria-label="Previous video"
+          onClick={(e) => handleCarouselClick(e, -1)}
+        >
           <div className="vc-container">
             <span className="video-controls">&lsaquo;</span>
           </div>
-        </div>
-        <div className="videos-container" ref={videoContainerRef}>
+        </a>
+        <div
+          id="videos-carousel"
+          className="videos-container"
+          ref={videoContainerRef}
+        >
           {newVideoFields
-            ? Object.values(newVideoFields).map((video, index) => (
-                <div key={`${from}-Video-${index}`} className="video">
-                  <Video
-                    video={video}
-                    index={index}
-                    active={vIndex + 2}
-                    videoWidth={videoWidth}
-                    videoHeight={videoHeight}
-                    from={from}
-                  />
-                </div>
-              ))
+            ? Object.values(newVideoFields).map((video, index) => {
+                console.log(vIndex, index)
+
+                return (
+                  <div
+                    key={`${from}-Video-${index}`}
+                    className="video"
+                    role="group"
+                    aria-roledescription="video"
+                    aria-label=""
+                  >
+                    <Video
+                      video={video}
+                      index={index}
+                      active={vIndex + 2}
+                      videoWidth={videoWidth}
+                      videoHeight={videoHeight}
+                      from={from}
+                      ariaActive={vIndex + 2 === index ? true : false}
+                    />
+                  </div>
+                )
+              })
             : ''}
         </div>
-        <div className="video-next">
+        <a
+          href="#"
+          className="video-next"
+          aria-controls="videos-carousel"
+          aria-label="Next video"
+          onClick={(e) => handleCarouselClick(e, 1)}
+        >
           <div className="vc-container">
             <span className="video-controls">&rsaquo;</span>
           </div>
-        </div>
+        </a>
       </div>
     </>
   )

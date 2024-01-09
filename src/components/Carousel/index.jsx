@@ -8,6 +8,7 @@ export default function Carousel({ collection, audioState }) {
   const [step, setStep] = useState(4)
   const [yearsForImages, setYearsForImages] = useState([])
   const [stepWidth, setStepWidth] = useState(0)
+  const [activeImgs, setActiveImgs] = useState([])
 
   // window fadein
   const carouselContainer = useRef(null)
@@ -22,6 +23,16 @@ export default function Carousel({ collection, audioState }) {
       }
     }, 500)
   }, [carouselContainer])
+
+  //hidding unactive images for keyboard navigation
+  useEffect(() => {
+    // indexes of active images
+    let visibleImg = []
+    for (let i = 0; i < step; i++) {
+      visibleImg.push(carIndex + i)
+    }
+    setActiveImgs(visibleImg)
+  }, [carIndex, step])
 
   //calculating initial index width window-size
   //run only one time
@@ -94,6 +105,7 @@ export default function Carousel({ collection, audioState }) {
     })
 
     //hides controls if necessary unactivated ...
+    //functionnality removed but keeped in place if Antoine's changes is mind
     function handleControls(prev, next) {
       if (carIndex === collection.length - step) {
         next.style.display = 'none'
@@ -109,10 +121,10 @@ export default function Carousel({ collection, audioState }) {
 
     handleResize(prev, next)
     //handleControls(prev, next)
-
     projectsContainer.style.left = `-${carIndex * stepWidth}px`
 
-    const handleCarouselClick = (value) => {
+    const handleCarouselClick = (e, value) => {
+      e.preventDefault()
       projectsContainer.style.transition = `1s`
 
       let nextIndex = 0
@@ -129,8 +141,8 @@ export default function Carousel({ collection, audioState }) {
       setCarIndex(nextIndex)
     }
 
-    const handlePrevClick = () => handleCarouselClick(step * -1)
-    const handleNextClick = () => handleCarouselClick(step)
+    const handlePrevClick = (e) => handleCarouselClick(e, step * -1)
+    const handleNextClick = (e) => handleCarouselClick(e, step)
 
     prev.addEventListener('click', handlePrevClick)
     next.addEventListener('click', handleNextClick)
@@ -149,11 +161,21 @@ export default function Carousel({ collection, audioState }) {
 
   return (
     <>
-      <div className="carousel-container" ref={carouselContainer}>
-        <div className="carousel-prev">
+      <div
+        className="carousel-container"
+        ref={carouselContainer}
+        aria-roledescription="carousel"
+        aria-label="Project Carousel"
+      >
+        <a
+          href="#"
+          className="carousel-prev"
+          aria-controls="projects-carousel"
+          aria-label="Previous projects"
+        >
           <span className="carousel-controls">&lsaquo;</span>
-        </div>
-        <div className="projects-container">
+        </a>
+        <div id="projects-carousel" className="projects-container">
           {collection ? (
             collection.map((album, index) => {
               const currentYear = new Date(album.date).getFullYear()
@@ -174,18 +196,23 @@ export default function Carousel({ collection, audioState }) {
                 )
               return (
                 <div
+                  href="#"
                   className={`project-card project-card-${index}`}
                   data-albumid={album.id}
                   data-album-date={album.date}
                   data-album-year={album.date}
                   key={`album-${index}`}
                   data-img-url={album.img_url}
+                  role="group"
+                  aria-roledescription="project"
+                  aria-label={`${index + 1} of ${collection.length}`}
                 >
                   {yearMarker}
                   <CarouselImg
                     album={album}
                     featured={album.featured_media}
                     albumIndex={index}
+                    active={activeImgs.indexOf(index) >= 0 ? true : false}
                   />
                 </div>
               )
@@ -194,9 +221,14 @@ export default function Carousel({ collection, audioState }) {
             <p>Loading...</p>
           )}
         </div>
-        <div className="carousel-next">
+        <a
+          href="#"
+          className="carousel-next"
+          aria-controls="projects-container"
+          aria-label="Next projects"
+        >
           <span className="carousel-controls">&rsaquo;</span>
-        </div>
+        </a>
       </div>
       <div className="projects-portal"></div>
     </>

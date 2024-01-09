@@ -169,7 +169,7 @@ export default function Collection({ album, albumIndex, featured }) {
                           <Image
                             className="c-project-img"
                             src={project.img}
-                            alt={project.title}
+                            alt={`${project.title} image`}
                             width={268}
                             height={268}
                           />

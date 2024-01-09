@@ -33,17 +33,21 @@ export default function SongListCollection({
   }
 
   return (
-    <div className="music-player-container">
+    <div className="music-player-container" aria-label="Project playlist">
       <div className="mpc-background"></div>
       <div className="mpc-wrapper">
-        <div className="mpc-inner">
+        <div className="mpc-inner" tabIndex="-1">
           {musicFields
             ? Object.values(customFields).map((music) => (
-                <div
+                <a
+                  href="#"
                   className="music-field"
                   key={`Music - ${music.index}`}
                   data-url={music.url}
                   onClick={() => handleMusicClick(music.index)}
+                  role="group"
+                  aria-roledescription={`play ${music.title}`}
+                  aria-label={`1 of ${music.index + 1}`}
                 >
                   <Image
                     className="project-arrow"
@@ -53,7 +57,7 @@ export default function SongListCollection({
                     alt={`Play Music - ${music.index}`}
                   />
                   <p style={{ color: color }}>{music.title}</p>
-                </div>
+                </a>
               ))
             : ''}
         </div>

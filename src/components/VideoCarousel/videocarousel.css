@@ -39,6 +39,7 @@
 }
 .video-prev,
 .video-next {
+  text-decoration: none;
   position: absolute;
   top: 0;
   width: 56px;

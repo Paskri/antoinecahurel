@@ -8,12 +8,13 @@ import Banner from '../../classes/Banner'
 
 const fetcher2 = (...args) => fetch(...args).then((res) => res.json())
 
-export default function CarouselImg({ album, featured, albumIndex }) {
+export default function CarouselImg({ album, featured, albumIndex, active }) {
   const audioDispatch = useAudioDispatch()
   const [load, setLoad] = useState(false)
 
   //handle img click
-  const handleClick = (album, featured, index) => {
+  const handleClick = (e, album, featured, index) => {
+    e.preventDefault()
     //updating banners width class Banner
     const BannerUpdate = new Banner(album, null)
     BannerUpdate.updateBannersWithAlbum()
@@ -70,7 +71,11 @@ export default function CarouselImg({ album, featured, albumIndex }) {
   }
 
   return (
-    <>
+    <a
+      tabIndex={active ? '0' : '-1'}
+      href="#"
+      onClick={(e) => handleClick(e, album, data.source_url, albumIndex)}
+    >
       {data.source_url ? (
         <Image
           className="project-img"
@@ -78,13 +83,12 @@ export default function CarouselImg({ album, featured, albumIndex }) {
           alt={album.title.rendered}
           width={270}
           height={270}
-          onClick={() => handleClick(album, data.source_url, albumIndex)}
           onMouseOver={(e) => handleMouseOver(e)}
           onMouseOut={(e) => handleMouseOut(e)}
         />
       ) : (
         'Missing Image'
       )}
-    </>
+    </a>
   )
 }

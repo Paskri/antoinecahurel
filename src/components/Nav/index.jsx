@@ -24,7 +24,7 @@ export default async function Nav() {
   }
 
   return (
-    <nav className="bottom-nav-container">
+    <nav className="bottom-nav-container" aria-label="Navigation menu">
       {!loading ? <MenuItems items={data.items} /> : 'Loading...'}
       <Socials />
     </nav>

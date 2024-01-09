@@ -242,6 +242,7 @@ export default function Project({ album, albumIndex, featured }) {
                 videoHeight={videoHeight}
                 from={album.slug}
                 albumIndex={albumIndex}
+                ariaActive={true}
               />
             ) : (
               ''

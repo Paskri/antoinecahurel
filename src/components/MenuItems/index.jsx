@@ -24,7 +24,8 @@ export default function MenuItems({ items }) {
   ]
 
   //handling menu btn clicks
-  const handleClick = (title, item) => {
+  const handleClick = (e, title, item) => {
+    e.preventDefault()
     //updating banners width class Banner with array
     const defaultBanners = document.querySelectorAll('.default-banners img')
     const currentBanners = document.querySelectorAll('.banners-wrapper img')
@@ -130,16 +131,22 @@ export default function MenuItems({ items }) {
 
   return (
     <>
-      <ul className="bottom-nav">
+      <ul className="bottom-nav" role="menubar" aria-label="Navigation menu">
         {items
           ? items.map((item) => (
               <li
+                role="none"
                 className="nav-item"
                 key={item.slug}
                 data-slug={item.slug}
-                onClick={() => handleClick(item.title, item)}
               >
-                {item.title}
+                <a
+                  href="#"
+                  role="menuitem"
+                  onClick={(e) => handleClick(e, item.title, item)}
+                >
+                  {item.title}
+                </a>
               </li>
             ))
           : ''}

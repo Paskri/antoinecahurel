@@ -12,6 +12,7 @@
 
 .carousel-prev,
 .carousel-next {
+  text-decoration: none;
   position: absolute;
   bottom: 0;
   width: 55px;
@@ -52,6 +53,11 @@
   justify-content: center;
   align-items: center;
   transition: filter 1s ease-in-out;
+}
+
+.show-project {
+}
+.hide-project {
 }
 .project-img {
   transition: filter 0.7s ease-in-out;

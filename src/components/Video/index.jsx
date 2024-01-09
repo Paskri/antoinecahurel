@@ -1,12 +1,21 @@
 'use client'
+import './video.css'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import YouTube from 'react-youtube'
 import { useAudioDispatch } from '../../hooks/useAudio'
 
 export default function Video(props) {
-  const { video, index, active, videoWidth, videoHeight, from, albumIndex } =
-    props
+  const {
+    video,
+    index,
+    active,
+    videoWidth,
+    videoHeight,
+    from,
+    albumIndex,
+    ariaActive,
+  } = props
   const [play, setPlay] = useState(false)
   const [player, setPlayer] = useState(false)
   const playerRef = useRef(null)
@@ -14,19 +23,20 @@ export default function Video(props) {
   const innerRef = useRef(null)
 
   //handle Video
-  useEffect(() => {
-    const videoInner = document.querySelector(`.${from}-video-inner-${index}`)
+  //useEffect(() => {
+  //  const videoInner = document.querySelector(`.${from}-video-inner-${index}`)
 
-    const handlePosterClick = () => {
-      setPlay(true)
-      audioDispatch({ type: 'PAUSE' })
-    }
+  const handlePosterClick = (e) => {
+    e.preventDefault()
+    setPlay(true)
+    audioDispatch({ type: 'PAUSE' })
+  }
 
-    videoInner.addEventListener('click', handlePosterClick)
-    return () => {
-      videoInner.removeEventListener('click', handlePosterClick)
-    }
-  }, [index, video.code, play, active, player, audioDispatch, from])
+  //  videoInner.addEventListener('click', handlePosterClick)
+  //  return () => {
+  //    videoInner.removeEventListener('click', handlePosterClick)
+  //  }
+  //}, [index, video.code, play, active, player, audioDispatch, from])
 
   //handling stopping Video when lauching song
   useEffect(() => {
@@ -104,7 +114,10 @@ export default function Video(props) {
   return (
     <>
       {video ? (
-        <div className={`${from}-video-inner-${index}`} ref={innerRef}>
+        <div
+          className={`${from}-video-inner-${index} video-inner-container`}
+          ref={innerRef}
+        >
           <div className={`player-${index}`}></div>
           {play && active === index ? (
             <YouTube
@@ -121,13 +134,19 @@ export default function Video(props) {
           ) : (
             <>
               {video && video.poster ? (
-                <Image
-                  className={`${from}-video-poster-${index}`}
-                  src={video.poster}
-                  width={videoWidth ? videoWidth : 768}
-                  height={videoHeight ? videoHeight : 432}
-                  alt={`Youtube Vidéo - ${index}`}
-                />
+                <a
+                  href="#"
+                  onClick={(e) => handlePosterClick(e)}
+                  tabIndex={ariaActive ? '0' : '-1'}
+                >
+                  <Image
+                    className={`${from}-video-poster-${index}`}
+                    src={video.poster}
+                    width={videoWidth ? videoWidth : 768}
+                    height={videoHeight ? videoHeight : 432}
+                    alt={`Youtube Vidéo - ${index}`}
+                  />
+                </a>
               ) : (
                 ''
               )}
