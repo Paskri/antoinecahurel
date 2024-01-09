@@ -17,7 +17,6 @@ class Banner {
           return result
         }, {})
     )
-
     this.update()
   }
 

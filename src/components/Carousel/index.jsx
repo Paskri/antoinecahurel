@@ -104,7 +104,7 @@ export default function Carousel({ collection, audioState }) {
       clearTimeout(resizeTimer)
     })
 
-    //hides controls if necessary unactivated ...
+    //hides controls if necessary --> unactivated ...
     //functionnality removed but keeped in place if Antoine's changes is mind
     function handleControls(prev, next) {
       if (carIndex === collection.length - step) {
@@ -120,37 +120,7 @@ export default function Carousel({ collection, audioState }) {
     }
 
     handleResize(prev, next)
-    //handleControls(prev, next)
     projectsContainer.style.left = `-${carIndex * stepWidth}px`
-
-    const handleCarouselClick = (e, value) => {
-      e.preventDefault()
-      projectsContainer.style.transition = `1s`
-
-      let nextIndex = 0
-
-      if (value < 0) {
-        nextIndex = carIndex + value < 0 ? 0 : carIndex + value
-      } else if (value > 0) {
-        nextIndex =
-          carIndex + value > collection.length - step
-            ? collection.length - step
-            : carIndex + value
-      }
-      projectsContainer.style.left = `-${nextIndex * 390}px`
-      setCarIndex(nextIndex)
-    }
-
-    const handlePrevClick = (e) => handleCarouselClick(e, step * -1)
-    const handleNextClick = (e) => handleCarouselClick(e, step)
-
-    prev.addEventListener('click', handlePrevClick)
-    next.addEventListener('click', handleNextClick)
-
-    return () => {
-      prev.removeEventListener('click', handlePrevClick)
-      next.removeEventListener('click', handleNextClick)
-    }
   }, [carIndex, collection.length, step, stepWidth])
 
   useEffect(() => {
@@ -158,6 +128,25 @@ export default function Carousel({ collection, audioState }) {
       collection.map((album) => new Date(album.date).getFullYear())
     )
   }, [collection])
+
+  const handleCarouselClick = (e, value) => {
+    e.preventDefault()
+    const projectsContainer = document.querySelector('.projects-container')
+    projectsContainer.style.transition = `1s`
+
+    let nextIndex = 0
+
+    if (value < 0) {
+      nextIndex = carIndex + value < 0 ? 0 : carIndex + value
+    } else if (value > 0) {
+      nextIndex =
+        carIndex + value > collection.length - step
+          ? collection.length - step
+          : carIndex + value
+    }
+    projectsContainer.style.left = `-${nextIndex * 390}px`
+    setCarIndex(nextIndex)
+  }
 
   return (
     <>
@@ -172,6 +161,7 @@ export default function Carousel({ collection, audioState }) {
           className="carousel-prev"
           aria-controls="projects-carousel"
           aria-label="Previous projects"
+          onClick={(e) => handleCarouselClick(e, step * -1)}
         >
           <span className="carousel-controls">&lsaquo;</span>
         </a>
@@ -226,6 +216,7 @@ export default function Carousel({ collection, audioState }) {
           className="carousel-next"
           aria-controls="projects-container"
           aria-label="Next projects"
+          onClick={(e) => handleCarouselClick(e, step)}
         >
           <span className="carousel-controls">&rsaquo;</span>
         </a>

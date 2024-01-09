@@ -35,9 +35,6 @@ export default function VideoCarousel(props) {
   //run one time only
   useEffect(() => {
     const videoContainer = videoContainerRef.current
-    const prev = videoContainer.previousElementSibling
-    const next = videoContainer.nextElementSibling
-
     function handleResize() {
       const windowWidth = window.innerWidth
       let newVideoWidth, newVideoHeight, newMargin, newStep

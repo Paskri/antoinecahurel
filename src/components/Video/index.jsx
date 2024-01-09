@@ -22,21 +22,11 @@ export default function Video(props) {
   const audioDispatch = useAudioDispatch()
   const innerRef = useRef(null)
 
-  //handle Video
-  //useEffect(() => {
-  //  const videoInner = document.querySelector(`.${from}-video-inner-${index}`)
-
   const handlePosterClick = (e) => {
     e.preventDefault()
     setPlay(true)
     audioDispatch({ type: 'PAUSE' })
   }
-
-  //  videoInner.addEventListener('click', handlePosterClick)
-  //  return () => {
-  //    videoInner.removeEventListener('click', handlePosterClick)
-  //  }
-  //}, [index, video.code, play, active, player, audioDispatch, from])
 
   //handling stopping Video when lauching song
   useEffect(() => {
@@ -75,9 +65,9 @@ export default function Video(props) {
     if (playBtn) {
       playBtn.addEventListener('click', handleMpcClick)
     }
+
     //menu items
     const bnc = document.querySelector('.bottom-nav-container')
-
     if (bnc) {
       bnc.addEventListener('click', handleMpcClick)
     }

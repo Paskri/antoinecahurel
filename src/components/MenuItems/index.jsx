@@ -4,14 +4,9 @@ import { useAudioDispatch } from '../../hooks/useAudio'
 import Banner from '../../classes/Banner'
 
 export default function MenuItems({ items }) {
-  const [datas, setDatas] = useState(null)
-  const [load, setLoad] = useState(false)
-  const [error, setError] = useState(false)
   const [dpDatas, setDpDatas] = useState(null)
   const [dpLoad, setDpLoad] = useState(false)
   const [dpLoaded, setDpLoaded] = useState(false)
-  const [dpError, setDpError] = useState(false)
-  const [pageId, setPageId] = useState(0)
   const audioDispatch = useAudioDispatch()
 
   const titleArray = [
@@ -29,7 +24,6 @@ export default function MenuItems({ items }) {
     //updating banners width class Banner with array
     const defaultBanners = document.querySelectorAll('.default-banners img')
     const currentBanners = document.querySelectorAll('.banners-wrapper img')
-    //console.log('Comparing', defaultBanners, currentBanners)
     if (defaultBanners !== currentBanners) {
       const BannerUpdate = new Banner(null, defaultBanners)
       BannerUpdate.updateBannersWithArray()
@@ -67,19 +61,6 @@ export default function MenuItems({ items }) {
       setTimeout(() => {
         carousel.style = 'display: flex; transition: opacity 2s; opacity: 1;'
       }, 200)
-    }
-
-    // loading playlists
-    if (
-      title === 'Music' ||
-      title === 'Sound Design' ||
-      title === 'Tech Reel'
-    ) {
-      const pid = parseInt(item.object_id)
-      //setLoad(true)
-      setPageId(pid)
-    } else if (title === 'Home') {
-      //setDpLoad(true)
     }
   }
 
