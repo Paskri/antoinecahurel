@@ -54,6 +54,12 @@
 .player-controls button.next:hover {
   background-position-y: -36px;
 }
+.player-controls button.previous:focus-visible,
+.player-controls button.pause:focus-visible,
+.player-controls button.play:focus-visible,
+.player-controls button.next:focus-visible {
+  outline: 1px solid white;
+}
 .player-title-display {
   padding-left: 0;
   font-family: 'MavenPro';
@@ -80,14 +86,6 @@
   width: 0;
   height: 10px;
   background-color: white;
-}
-.progress {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 10px;
-  background-color: white;
   border-radius: 0;
   border: none;
 }
@@ -100,7 +98,9 @@
 .progress[value]::-moz-progress-bar {
   background-color: #fff;
 }
-
+.progress:focus-visible {
+  outline: 1px solid white;
+}
 @media screen and (min-width: 395px) {
   .player-controls-container {
     flex-direction: row;

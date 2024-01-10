@@ -144,12 +144,17 @@ export default function Player() {
 
       // add boundary for percentage, cannot be bigger than 100 or smaller than zero
       if (percentage > 100) {
-        percentage = 100
+        if (audioState.isPlaying) {
+          percentage = 100
+        } else {
+          percentage = 99.9
+        }
       } else if (percentage < 0) {
         percentage = 0
       }
-
-      audio.currentTime = audio.duration * (percentage / 100)
+      let newTime = audio.duration * (percentage / 100)
+      audio.currentTime = newTime
+      updateProgressClick()
     }
   }
 
@@ -273,9 +278,9 @@ export default function Player() {
         {audioState.isPlaying ? '| isPlaying : true' : '| isPlaying : false'}
         {audioState.audioRef.current && audioState.audioRef.current.currentTime
           ? ' | CurrentTime : ' + audioState.audioRef.current.currentTime
-          : ' | CurrentTime : ' + audioState.audioRef.current.currentTime}
+          : ' | CurrentTime : undefined'}
         {audioState.audioRef.current && audioState.audioRef.current.duration
           ? ' | Duration : ' + audioState.audioRef.current.duration
-          : ' | Duration : ' + audioState.audioRef.current.duration}
+          : ' | Duration : undefined'}
       </div>
 */

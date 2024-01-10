@@ -1,5 +1,5 @@
 'use client'
-import './songlist.css'
+//import './songlist.css'
 import arrow from '../../assets/images/title-arrow.webp'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'

@@ -127,8 +127,6 @@ export default function VideoCarousel(props) {
         >
           {newVideoFields
             ? Object.values(newVideoFields).map((video, index) => {
-                console.log(vIndex, index)
-
                 return (
                   <div
                     key={`${from}-Video-${index}`}
@@ -145,6 +143,7 @@ export default function VideoCarousel(props) {
                       videoHeight={videoHeight}
                       from={from}
                       ariaActive={vIndex + 2 === index ? true : false}
+                      projectVideo={false}
                     />
                   </div>
                 )

@@ -15,6 +15,7 @@ export default function Video(props) {
     from,
     albumIndex,
     ariaActive,
+    projectVideo,
   } = props
   const [play, setPlay] = useState(false)
   const [player, setPlayer] = useState(false)
@@ -105,7 +106,11 @@ export default function Video(props) {
     <>
       {video ? (
         <div
-          className={`${from}-video-inner-${index} video-inner-container`}
+          className={`${from}-video-inner-${index} ${
+            projectVideo
+              ? 'project-video-inner-container'
+              : 'video-inner-container'
+          }`}
           ref={innerRef}
         >
           <div className={`player-${index}`}></div>

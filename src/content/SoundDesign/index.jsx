@@ -22,8 +22,8 @@ export default function SoundDesign() {
     }, 500)
   }, [musicContainer])
 
+  //updating player container height
   useEffect(() => {
-    //updating player container height
     const mpc = document.querySelector('.music-player-container')
     if (mpc) {
       mpc.style.minHeight = '536px'
@@ -49,6 +49,7 @@ export default function SoundDesign() {
       result[key] = value
       return result
     }, {})
+
   return (
     <>
       <div

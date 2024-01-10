@@ -6,7 +6,6 @@ import Image from 'next/image'
 import SongList from '../../components/SongList'
 import Video from '../../components/Video'
 import useSWR from 'swr'
-import Loader from '../../components/Loader'
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 export default function Project({ album, albumIndex, featured }) {
@@ -243,6 +242,7 @@ export default function Project({ album, albumIndex, featured }) {
                 from={album.slug}
                 albumIndex={albumIndex}
                 ariaActive={true}
+                projectVideo={true}
               />
             ) : (
               ''

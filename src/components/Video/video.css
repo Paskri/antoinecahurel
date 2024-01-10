@@ -1,6 +1,38 @@
-.video-inner-container {
-  height: 432px;
+.video-inner-container,
+.project-video-inner-container {
+  height: 144px;
 }
-.video-inner-container a:focus {
+.video-inner-container a:focus-visible,
+.project-video-inner-container a:focus-visible {
   outline: 1px solid white;
+}
+.video-inner-container a:focus-visible {
+  height: 142px;
+}
+
+@media screen and (min-width: 485px) {
+  .project-video-inner-container {
+    height: 236px;
+  }
+}
+@media screen and (min-width: 700px) {
+  .video-inner-container {
+    height: 236px;
+  }
+  .video-inner-container a:focus-visible {
+    height: 234px;
+  }
+}
+@media screen and (min-width: 860px) {
+  .project-video-inner-container {
+    height: 432px;
+  }
+}
+@media screen and (min-width: 1250px) {
+  .video-inner-container {
+    height: 432px;
+  }
+  .video-inner-container a:focus-visible {
+    height: 430px;
+  }
 }

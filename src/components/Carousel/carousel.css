@@ -14,7 +14,7 @@
 .carousel-next {
   text-decoration: none;
   position: absolute;
-  bottom: 0;
+  bottom: 1px;
   width: 55px;
   height: 170px;
   background-color: rgb(255, 255, 255, 0.4);
@@ -28,14 +28,14 @@
 .carousel-prev {
   left: 0;
 }
-.carousel-prev:focus {
+.carousel-prev:focus-visible {
   left: 1px;
   outline: 1px solid white;
 }
 .carousel-next {
   right: 0;
 }
-.carousel-next:focus {
+.carousel-next:focus-visible {
   right: 1px;
   outline: 1px solid white;
 }
@@ -46,7 +46,7 @@
 .projects-container {
   background: #131313;
   position: absolute;
-  bottom: 0;
+  bottom: 1px;
   left: 0;
   height: 170px;
   display: flex;
@@ -63,7 +63,7 @@
   transition: filter 1s ease-in-out;
 }
 
-.project-link:focus {
+.project-link:focus-visible {
   outline: 1px solid white;
 }
 .project-img {

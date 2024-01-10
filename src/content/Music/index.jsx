@@ -54,7 +54,6 @@ export default function Music() {
         Object.values(data).length > 0 ? (
           <>
             <SongList musicFields={musicFields} background={null} />
-
             <VideoCarousel data={data} from={'music'} />
           </>
         ) : (
