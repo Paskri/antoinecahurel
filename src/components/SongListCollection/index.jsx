@@ -36,7 +36,7 @@ export default function SongListCollection({
     <div className="music-player-container" aria-label="Project playlist">
       <div className="mpc-background"></div>
       <div className="mpc-wrapper">
-        <div className="mpc-inner" tabIndex="-1">
+        <div className="mpc-inner scroll-bar" tabIndex="-1">
           {musicFields
             ? Object.values(customFields).map((music) => (
                 <a

@@ -31,44 +31,56 @@ class Banner {
   }
 
   update() {
-    // removing previous banners
+    // Removing previous banners
     const bannerWrapper = document.querySelector('.banners-wrapper')
     const bannerContainers = bannerWrapper.querySelectorAll('.img-container')
-    const currentBanners = bannerWrapper.querySelectorAll('.banner')
+
     bannerContainers.forEach((container, index) => {
       container.classList.remove('display')
       const banner = container.querySelector('.banner')
       banner.classList.remove('banner-show')
 
       setTimeout(() => {
-        if (container && container.parentElement === bannerWrapper) {
+        // Check if container is still a child of bannerWrapper
+        if (container && container.parentNode === bannerWrapper) {
           banner.classList.remove('banner-display')
           setTimeout(() => {
+            // Double check if container is still in bannerWrapper
             if (bannerWrapper.contains(container)) {
               bannerWrapper.removeChild(container)
+              console.log('Container removed successfully.')
+            } else {
+              console.log('Container not found in bannerWrapper.')
             }
           }, 200)
+        } else {
+          console.log('Container not a child of bannerWrapper.')
         }
       }, 3000)
     })
 
-    //adding new banners
+    // Adding new banners
     this.projectBanners.reverse().forEach((banner, index) => {
       const imageElement = document.createElement('div')
       imageElement.classList.add('img-container')
       imageElement.classList.add(`index-${index}`)
-      // lazy removed for test loading="lazy"
       imageElement.innerHTML = `<img src="${banner}" alt="image-banner_${index}" priority width="2560" height="459" decoding="async" data-nimg="1" class="banner${
         index === this.projectBanners.length - 1 ? ' banner-display' : ''
       }" style="color: transparent;">`
       imageElement.classList.add('img-container')
-      // adding img
-      bannerWrapper.prepend(imageElement)
-      if (index === this.projectBanners.length - 1) {
-        imageElement.classList.add('display')
-        setTimeout(() => {
-          imageElement.querySelector('img').classList.add('banner-show')
-        }, 200)
+
+      // Check if bannerWrapper is still available before appending
+      if (bannerWrapper) {
+        bannerWrapper.prepend(imageElement)
+
+        if (index === this.projectBanners.length - 1) {
+          imageElement.classList.add('display')
+          setTimeout(() => {
+            imageElement.querySelector('img').classList.add('banner-show')
+          }, 200)
+        }
+      } else {
+        console.log('Banner wrapper not found.')
       }
     })
   }

@@ -8,6 +8,7 @@ import './contact.css'
 export default function Contact(user, validate) {
   // window fadein
   const musicContainer = useRef(null)
+
   useEffect(() => {
     setTimeout(() => {
       if (musicContainer.current) {
